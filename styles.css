@@ -1,0 +1,170 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #eaf4fc;
+    color: #333;
+}
+
+#content {
+    display: none; /* Initially hide the main content */
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Cover section */
+.cover {
+    text-align: center;
+    position: relative;
+    padding: 50px 20px;
+    background-image: url('background-image.jpg'); /* Add your image path */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 2s ease-in-out; /* Fade out transition */
+}
+
+.cover.hide {
+    opacity: 0;
+}
+
+/* Message list section */
+.message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Individual message with background image */
+.message {
+    position: relative;
+    background-image: url('flower.png'); /* Add your flower image path */
+    background-size: cover;
+    background-position: center;
+    width: 45%;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+/* Left-aligned messages */
+.message.left {
+    align-self: flex-start;
+}
+
+/* Right-aligned messages */
+.message.right {
+    align-self: flex-end;
+}
+
+/* Overlay text on flower image */
+.message .overlay-text {
+    position: absolute;
+    color: black; /* Text color */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+    padding: 0 10px;
+    white-space: normal; /* Allow the text to wrap */
+    word-wrap: break-word; /* Break long words if necessary */
+    overflow-wrap: break-word; /* Ensure that long words are properly wrapped */
+    overflow: hidden;
+}
+
+/* Recipient name in bottom-right corner */
+.message .recipient {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 14px;
+    color: black;
+    font-style: italic;
+    z-index: 2;
+}
+
+/* Fullscreen overlay for final message */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+}
+
+.overlay-content p {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.overlay-content img {
+    width: 200px; /* Adjust the size of the final image */
+}
+
+/* Close button for overlay */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* When the overlay becomes visible */
+.overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+    .message {
+        width: 100%;
+        height: 120px;
+    }
+
+    .overlay-content p {
+        font-size: 24px;
+    }
+
+    .overlay-content img {
+        width: 150px;
+    }
+
+    .message .recipient {
+        font-size: 12px;
+    }
+
+    .close-btn {
+        font-size: 24px;
+    }
+}

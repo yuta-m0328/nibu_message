@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卒業式メッセージ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Cover Section (Initially displayed) -->
+    <div class="cover" id="cover">
+        <h1>卒業セレモニー</h1>
+        <h2>Game Day / Live Day</h2>
+    </div>
+
+    <!-- Content Section (Initially hidden) -->
+    <div class="container" id="content">
+        <!-- Message Section with Infinite Scroll -->
+        <section class="message-list" id="message-list">
+            <!-- Messages will be appended here by JavaScript -->
+        </section>
+    </div>
+
+    <!-- Fullscreen Overlay Final Message -->
+    <div class="overlay" id="final-overlay">
+        <div class="overlay-content">
+            <span class="close-btn" id="close-btn">&times;</span> <!-- Close button -->
+            <p>改めて卒業おめでとう</p>
+            <img src="final-image.jpg" alt="Final Image" />
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
