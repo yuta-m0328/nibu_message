@@ -11,14 +11,26 @@
     color: #333;
 } */
 body {
-    background: linear-gradient(45deg, #61a0ff 0%, #cce5ff 100%);
-    /* background: linear-gradient(135deg, #61a0ff 20%, orange 70%); */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    /* 135deg: 左上から右下に向かうグラデーション */
+    background: linear-gradient(45deg, #61a0ff 0%, #cce5ff 100%); /* 後々containerに上書きされる */
     height: 100vh;
+    width: 100%;
+    /* position: fixed; */
     margin: 0;
+}
+.container::before {
+    background: linear-gradient(45deg, #61a0ff 0%, #cce5ff 100%);
+    content:"";
+    display:block;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+    width:100%;
+    height:100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* background-image:url('https://jito-site.com/wp-content/uploads/2022/12/test01.jpg'); */
+    background-size: cover;
 }
 
 #content {
@@ -36,7 +48,8 @@ body {
     transition: width 0.1s ease-out; /* バーの動きを滑らかに */
 }
 .container {
-    max-width: 600px;
+    /* max-width: 600px; */
+    width: 100%;
     margin: auto;
     padding: 20px;
 }
@@ -95,6 +108,11 @@ body {
     text-align: center;
     opacity: 1; /* 初期状態 */
     transition: opacity 2s ease-in-out; /* フェードアウトのトランジション */
+    background: linear-gradient(135deg, #61a0ff 20%, orange 100%);
+    height: 100vh;
+    width: 100%;
+    /* position: fixed; */
+    margin: 0;
 }
 /* フルサイズの背景画像1 */
 .background-image1 {
@@ -206,12 +224,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* はみ出した部分を隠す */
 }
 
 /* ランダム画像 */
 .random-image {
     width: 300px;
-    /* height: 150px; */
+    height: 200px;
     object-fit: contain;
     justify-content: center;
     align-items: center;
@@ -305,6 +324,7 @@ body {
 .overlay-content img {
     /* width: 200px; Adjust the size of the final image */
     background-size: cover;
+    width: 90%;
 }
 
 /* Close button for overlay */
@@ -337,6 +357,7 @@ body {
 
     .overlay-content img {
         width: 150px;
+        
     }
 
     .message .recipient {

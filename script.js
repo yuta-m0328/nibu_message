@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('content').style.display = 'block';
             canShowOverlay = true;
         }, 2000); // Wait for fade out to complete
-    }, 200);
+    }, 600);
     
     // Scroll to the bottom button functionality
     scrollBottomBtn.addEventListener('click', function() {
