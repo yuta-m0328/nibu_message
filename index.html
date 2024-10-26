@@ -9,21 +9,26 @@
 
 </head>
 <body>
-
+    <div class="progress-bar" id="progress-bar"></div>
     <!-- Cover Section (Initially displayed) -->
     <div class="cover" id="cover">
-        <img src="応援広告.png" alt="背景画像1" class="background-image1">
+        <img src="static/応援広告.png" alt="背景画像1" class="background-image1">
         <!-- 中サイズの画像2 -->
-        <img src="ロゴ_清書.png" alt="前景画像2" class="foreground-image2">
+        <img src="static/ロゴ_清書.png" alt="前景画像2" class="foreground-image2">
         <!-- <h1>卒業セレモニー</h1> -->
         <!-- <h2>Game Day / Live Day</h2> -->
     </div>
 
     <!-- Content Section (Initially hidden) -->
     <div class="container" id="content">
+        <div class="banner">
+            <img src="static/banner.png" alt="Banner Image" class="banner-image">
+        </div>
         <button id="scroll-bottom-btn" class="scroll-bottom-btn">
             <span class="material-icons">arrow_downward</span>
         </button>
+
+
         <!-- Message Section with Infinite Scroll -->
         <section class="message-list" id="message-list">
             <!-- Messages will be appended here by JavaScript -->
