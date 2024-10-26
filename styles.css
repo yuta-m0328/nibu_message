@@ -5,10 +5,19 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     font-family: 'Arial', sans-serif;
     background-color: #eaf4fc;
     color: #333;
+} */
+body {
+    background: linear-gradient(135deg, #61a0ff 0%, #cce5ff 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* 135deg: 左上から右下に向かうグラデーション */
+    height: 100vh;
+    margin: 0;
 }
 
 #content {
@@ -21,19 +30,84 @@ body {
     padding: 20px;
 }
 
-/* Cover section */
-.cover {
+/* Button to scroll to the bottom */
+.scroll-bottom-btn {
+    display: inline-block;
+    padding: 15px;
+    background-color: #6c757d; /* 灰色 */
+    color: white;
+    border: none;
+    border-radius: 50%; /* 丸型ボタン */
+    width: 60px; /* ボタンの大きさ（縦横同じ） */
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
     text-align: center;
-    position: relative;
-    padding: 50px 20px;
-    background-image: url('background-image.jpg'); /* Add your image path */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    border-radius: 10px;
-    opacity: 1;
-    transition: opacity 2s ease-in-out; /* Fade out transition */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 軽いシャドウで立体感 */
+    
+    /* アイコンを中央に配置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.scroll-bottom-btn .material-icons {
+    font-size: 28px; /* アイコンのサイズを少し大きめに */
+}
+
+/* ボタンをホバーしたときのスタイル */
+.scroll-bottom-btn:hover {
+    background-color: #5a6268; /* ホバー時に少し濃い灰色に */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* シャドウの強化 */
+    transform: translateX(-50%) translateY(-2px); /* 軽く持ち上がるように */
+}
+
+/* ボタンを押した時のスタイル */
+.scroll-bottom-btn:active {
+    background-color: #545b62; /* 押されたときにさらに濃い灰色 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 押し込み感 */
+    transform: translateX(-50%) translateY(0); /* 押し込む */
+}
+
+
+
+.cover {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* フル画面表示 */
+    overflow: hidden; /* 内容がはみ出ないように */
+    text-align: center;
+    opacity: 1; /* 初期状態 */
+    transition: opacity 2s ease-in-out; /* フェードアウトのトランジション */
+}
+/* フルサイズの背景画像1 */
+.background-image1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画面全体をカバー */
+    z-index: 1; /* 一番奥に配置 */
+}
+
+/* 中サイズの前景画像2 */
+.foreground-image2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 真ん中に配置 */
+    width: 50%; /* 中くらいのサイズ */
+    height: auto; /* 縦横比を維持 */
+    z-index: 2; /* 背景の上に重ねる */
+}
+
 
 .cover.hide {
     opacity: 0;
@@ -46,10 +120,17 @@ body {
     gap: 15px;
 }
 
+/* メッセージコンテナ：左右交互にメッセージと画像を配置 */
+.message-container {
+    display: flex;
+    justify-content: space-between; /* 左右に配置 */
+    width: 100%;
+    margin-bottom: 20px;
+}
 /* Individual message with background image */
 .message {
     position: relative;
-    background-image: url('flower.png'); /* Add your flower image path */
+    background-image: url('flower.png');
     background-size: cover;
     background-position: center;
     width: 45%;
@@ -57,10 +138,25 @@ body {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* 画像とテキストを左右に配置 */
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: -40px;
 }
+/* ランダム画像コンテナ：空白を埋めるために追加 */
+.image-container {
+    width: 45%; /* メッセージの反対側に画像を表示するために空白を埋める */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ランダム画像 */
+.random-image {
+    width: 250px;
+    /* height: 150px; */
+    object-fit: contain;
+}
+
 
 /* Left-aligned messages */
 .message.left {
@@ -76,7 +172,7 @@ body {
 .message .overlay-text {
     position: absolute;
     color: black; /* Text color */
-    font-size: 18px;
+    font-size: 13px;
     font-weight: bold;
     text-align: center;
     z-index: 2;
@@ -92,7 +188,7 @@ body {
     position: absolute;
     right: 10px;
     bottom: 10px;
-    font-size: 14px;
+    font-size: 10px;
     color: black;
     font-style: italic;
     z-index: 2;
@@ -118,6 +214,7 @@ body {
 .overlay-content {
     text-align: center;
     color: white;
+    background-size: cover;
 }
 
 .overlay-content p {
@@ -126,7 +223,8 @@ body {
 }
 
 .overlay-content img {
-    width: 200px; /* Adjust the size of the final image */
+    /* width: 200px; Adjust the size of the final image */
+    background-size: cover;
 }
 
 /* Close button for overlay */
@@ -143,10 +241,11 @@ body {
 .overlay.show {
     opacity: 1;
     pointer-events: auto;
+    background-size: cover;
 }
 
 /* Responsive for mobile */
-@media (max-width: 600px) {
+@media (max-width: 374px) {
     .message {
         width: 100%;
         height: 120px;
@@ -167,4 +266,27 @@ body {
     .close-btn {
         font-size: 24px;
     }
+}
+
+/* PCサイズでさらに調整 */
+@media (min-width: 1024px) {
+    .message-list {
+        max-width: 1000px; /* 大きいスクリーンでも広がりすぎないように */
+        padding: 40px; /* PC画面ではより大きな余白を確保 */
+    }
+
+    .message {
+        width: 45%; /* 2列表示の幅 */
+        height: 180px; /* PC画面では少し高さを大きく */
+    }
+
+    /* テキストサイズをPCに合わせて調整 */
+    .message .overlay-text {
+        font-size: 18px; /* PCでは文字を大きく */
+    }
+    .message-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
 }

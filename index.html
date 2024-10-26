@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卒業式メッセージ</title>
+    <title>丹生明里さん卒業に寄せたメッセージ</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
 
     <!-- Cover Section (Initially displayed) -->
     <div class="cover" id="cover">
-        <h1>卒業セレモニー</h1>
-        <h2>Game Day / Live Day</h2>
+        <img src="応援広告.png" alt="背景画像1" class="background-image1">
+        <!-- 中サイズの画像2 -->
+        <img src="ロゴ_清書.png" alt="前景画像2" class="foreground-image2">
+        <!-- <h1>卒業セレモニー</h1> -->
+        <!-- <h2>Game Day / Live Day</h2> -->
     </div>
 
     <!-- Content Section (Initially hidden) -->
     <div class="container" id="content">
+        <button id="scroll-bottom-btn" class="scroll-bottom-btn">
+            <span class="material-icons">arrow_downward</span>
+        </button>
         <!-- Message Section with Infinite Scroll -->
         <section class="message-list" id="message-list">
             <!-- Messages will be appended here by JavaScript -->
@@ -25,9 +33,8 @@
     <!-- Fullscreen Overlay Final Message -->
     <div class="overlay" id="final-overlay">
         <div class="overlay-content">
-            <span class="close-btn" id="close-btn">&times;</span> <!-- Close button -->
-            <p>改めて卒業おめでとう</p>
-            <img src="final-image.jpg" alt="Final Image" />
+            <!-- <span class="close-btn" id="close-btn">&times;</span> Close button -->
+            <img src="final-image.gif" alt="Final Image" />
         </div>
     </div>
 
