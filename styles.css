@@ -113,6 +113,7 @@ body {
     width: 100%;
     /* position: fixed; */
     margin: 0;
+    z-index: 1001;
 }
 /* フルサイズの背景画像1 */
 .background-image1 {
@@ -316,11 +317,6 @@ body {
     background-size: cover;
 }
 
-.overlay-content p {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
 
 .overlay-content video {
     max-width: 90%; /* 画面幅に対して最大90%のサイズに調整 */
@@ -351,15 +347,6 @@ body {
     .message {
         width: 100%;
         height: 120px;
-    }
-
-    .overlay-content p {
-        font-size: 24px;
-    }
-
-    .overlay-content img {
-        width: 150px;
-        
     }
 
     .message .recipient {
@@ -394,3 +381,9 @@ body {
 
 }
 
+.overlay-credit {
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 10px;
+    text-align: center;
+}

@@ -9,7 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // フェードインを抑制するためのフラグとタイマー
     let canShowOverlay = false; // フェードインが許可されているかどうか
     const fadeOutDelay = 5000; // フェードアウト後に再びフェードインできるまでの遅延時間（5秒）
-
+    // 動画オーバーレイの表示
+    function showOverlay() {
+        if (canShowOverlay) {
+            finalOverlay.classList.add('show');
+            finalVideo.play(); // 動画を再生
+        }
+    }
     const messages = [{text: '丹生ちゃん卒業おめでとうございます！\nこれからもずっと丹生推しです。丹生ちゃんの未来が明るく幸せなものになりますように。', recipient: 'ひかり'},
         {text: 'にぶちゃんの笑顔に沢山癒され、自分も笑顔になりました！にぶちゃんはまさに日向坂の象徴だと思います！にぱー！', recipient: 'シロナマズ'},
         {text: '僕のどん底の人生に丹生ちゃんの笑顔という光をくれてありがとう！大好き！', recipient: 'にっぱ'},
@@ -255,8 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Check if we have reached the bottom of the page to trigger the final message
         if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 100 && canShowOverlay) {
-            finalOverlay.classList.add('show'); // Show the final overlay with fade-in
-            finalVideo.play(); // 動画を再生
+            showOverlay();
         }
 
     });
@@ -275,10 +280,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cover fade out after a few seconds
     setTimeout(function() {
         document.getElementById('cover').classList.add('hide');
-
+        canShowOverlay = false;
         setTimeout(function() {
             document.getElementById('cover').style.display = 'none';
             document.getElementById('content').style.display = 'block';
+            // document.getElementById('credit-box').style.display = 'block';
             canShowOverlay = true;
         }, 2000); // Wait for fade out to complete
     }, 600);
@@ -291,15 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // closeBtn.addEventListener('click', function() {
-    //     finalOverlay.classList.remove('show'); // Fade out the overlay
-    //     canShowOverlay = false; // 一度フェードアウト後、フェードインを一時的に無効にする
-    //     setTimeout(function() {
-    //         canShowOverlay = true; // 5秒後にフェードインを再び許可する
-    //     }, fadeOutDelay);
-    // });
-    // Click event to close the overlay
-    finalOverlay.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function() {
         finalOverlay.classList.remove('show'); // Fade out the overlay
         canShowOverlay = false; // 一度フェードアウト後、フェードインを一時的に無効にする
         finalVideo.pause(); // 動画を一時停止
@@ -308,6 +306,16 @@ document.addEventListener('DOMContentLoaded', function() {
             canShowOverlay = true; // 5秒後にフェードインを再び許可する
         }, fadeOutDelay);
     });
+    // Click event to close the overlay
+    // finalOverlay.addEventListener('click', function() {
+    //     finalOverlay.classList.remove('show'); // Fade out the overlay
+    //     canShowOverlay = false; // 一度フェードアウト後、フェードインを一時的に無効にする
+    //     finalVideo.pause(); // 動画を一時停止
+    //     finalVideo.currentTime = 0; // 再生位置をリセット
+    //     setTimeout(function() {
+    //         canShowOverlay = true; // 5秒後にフェードインを再び許可する
+    //     }, fadeOutDelay);
+    // });
 
 
     
