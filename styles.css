@@ -321,10 +321,12 @@ body {
     margin-bottom: 20px;
 }
 
-.overlay-content img {
-    /* width: 200px; Adjust the size of the final image */
-    background-size: cover;
-    width: 90%;
+
+.overlay-content video {
+    max-width: 90%; /* 画面幅に対して最大90%のサイズに調整 */
+    max-height: 80%; /* 画面高さに対して最大80%のサイズに調整 */
+    border-radius: 10px; /* 動画の角を少し丸める */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* シャドウで立体感を追加 */
 }
 
 /* Close button for overlay */

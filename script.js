@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const messageList = document.getElementById('message-list');
     const finalOverlay = document.getElementById('final-overlay');
+    const finalVideo = document.getElementById('final-video');
     const closeBtn = document.getElementById('close-btn'); // Close button
     const scrollBottomBtn = document.getElementById('scroll-bottom-btn'); // Scroll button
     let messageCount = 0;
@@ -89,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         {text: 'こんなにも長く1人の人を応援し続けたのは初めてでした。ずっとずっとにぶちゃんが大好きです！！', recipient: 'ののん'},
         {text: 'たくさんの幸せな思い出をありがとう。\n丹生ちゃんはずっと私のアイドルです！\n丹生ちゃんの未来に幸あれ！', recipient: 'なお'},
         {text: 'ご卒業おめでとうございます☆\n\n丹生ちゃんの輝く様な笑顔と元気さにいつも元気をもらってました。\n\nこれからも丹生ちゃんらしく頑張ってくださいᡣ(*^^*)', recipient: 'しょしょ'},
-        {text: '。', recipient: 'てらお🐸南山'},
         {text: '丹生ちゃんの無邪気な笑顔に沢山の元気貰えました！沢山のありがとう。', recipient: 'チト'},
         {text: '丹生ちゃんを応援して見た景色、丹生ちゃんのお陰で繋がれたご縁。全部大切な宝物だよ。卒業おめでとう。', recipient: 'たるはし'},
         {text: '卒業おめでとう！丹生ちゃんの笑顔にたくさんたくさん救われてきました。真摯にファンに向き合い、仲間を常に思いやり、「ハッピーオーラ」を誰よりも大切にし続ける姿は本当にかっこよくて、常に憧れであり大きな誇りでした…！心からありがとう。卒業してからも素敵な出会いに溢れていますように！', recipient: 'とらん'},
@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {text: '卒業おめでとう。\n丹生ちゃんに出会えた奇跡に感謝してるよ。\n卒業後の活躍も楽しみにしてる！\nまたね〜', recipient: 'やっすん'},
         {text: 'にぶちゃん卒業おめでとう！にぶちゃんには、何度も元気をもらい救われました。推しがにぶちゃんで、誇りに思うし本当に良かったよ。\n丹生明里は、究極のアイドルでした。', recipient: 'yuki'},
         {text: 'ずっとずっと大好きです\nこれからも応援してます\n丹生ちゃん卒業おめでとっ', recipient: 'なぎお'},
+        {text: '丹生ちゃんを推していて良かったと思うことがたくさんありました。これからも大好きです。', recipient: 'まっQ'},
         {text: '有吉eeeee!を見てファンになりました。卒業してからも応援させていただきますので、丹生ちゃん自身も幸せでいてください。', recipient: 'がらすの'},
         {text: '丹生ちゃん卒業おめでとう！TV受け以上のリアクションを観ていて推しメンになりました！新しい道へ行ったとしても丹生ちゃんのこと忘れないからね…', recipient: 'SHOW_すみ'},
         {text: '丹生ちゃんご卒業おめでとうございます！\nお互い幸せな人生送ろうな！', recipient: 'わんわん'},
@@ -136,9 +137,11 @@ document.addEventListener('DOMContentLoaded', function() {
         {text: '日向坂の活動お疲れ様！沢山の笑顔をありがとう！今後も新たなステージで活躍する丹生ちゃんを応援します！', recipient: 'やま'},
         {text: '卒業おめでとうございます！笑顔でハッピーオーラ全開の丹生ちゃんが大好きです！これからも応援してます！', recipient: 'かなで'},
         {text: 'にぶちゃん、たくさんの元気と笑顔と勇気とパワーと癒しをありがとう！！！！！7年前からわたしの生きる力のみなもとは間違いなくにぶちゃんでした！大好きだよー！！！', recipient: 'あやねっち'},
+        {text: '推しメンでもあり、人間としても尊敬しています。これからも大好きです、卒業おめでとう！', recipient: 'まっつん'},
         {text: '卒業おめでとうございます！丹生ちゃんは今までアイドルに興味がなかった私が初めて推したアイドルです！いつでもニコニコしていて、可愛くて、明るくて、、そんな丹生ちゃんにいつも元気をもらっています！今までもこれからもずっっと大好きです！丹生ちゃんの事を推せて本当に幸せです♡', recipient: 'ねね'},
         {text: '丹生ちゃん約7年間本当にお疲れ様！丹生ちゃんが夢を叶えていく姿を応援できて幸せでした。これからもずっっと応援させてね。', recipient: '宮崎出身Taka'},
-        {text: '丹生ちゃんと出会ってから人生がすっごく楽しくなりました✨アイドルになってくれて本当にありがとう😭', recipient: 'なな☘️'}];
+        {text: '丹生ちゃんと出会ってから人生がすっごく楽しくなりました✨アイドルになってくれて本当にありがとう😭', recipient: 'なな☘️'}]
+       ;
     const totalMessages = messages.length; // Total number of messages
     const imageOptions = ['static/丹生1.png', 'static/丹生2.png', 'static/丹生3.png'] ; // ランダム画像リスト
     for (let i = 1; i <= 35; i++) {
@@ -253,6 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check if we have reached the bottom of the page to trigger the final message
         if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 100 && canShowOverlay) {
             finalOverlay.classList.add('show'); // Show the final overlay with fade-in
+            finalVideo.play(); // 動画を再生
         }
 
     });
@@ -271,6 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cover fade out after a few seconds
     setTimeout(function() {
         document.getElementById('cover').classList.add('hide');
+
         setTimeout(function() {
             document.getElementById('cover').style.display = 'none';
             document.getElementById('content').style.display = 'block';
@@ -297,6 +302,8 @@ document.addEventListener('DOMContentLoaded', function() {
     finalOverlay.addEventListener('click', function() {
         finalOverlay.classList.remove('show'); // Fade out the overlay
         canShowOverlay = false; // 一度フェードアウト後、フェードインを一時的に無効にする
+        finalVideo.pause(); // 動画を一時停止
+        finalVideo.currentTime = 0; // 再生位置をリセット
         setTimeout(function() {
             canShowOverlay = true; // 5秒後にフェードインを再び許可する
         }, fadeOutDelay);
